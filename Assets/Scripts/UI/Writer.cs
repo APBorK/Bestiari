@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class Writer : MonoBehaviour
 {
     [SerializeField] private GameObject panel;
-    private const int SizeText = 200;
+    private const int SizeText = 300;
     private string _text;
     private Text _list;
 
