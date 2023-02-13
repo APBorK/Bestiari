@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415527072818489586}
   - component: {fileID: 5415527072818489589}
   m_Layer: 5
-  m_Name: Variable
+  m_Name: AbstractFactory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,21 +68,33 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'customerName
-
-
-    orderTotal
-
-
-    invoiceNumber'
+  m_Text: "public abstract class AbstractFactory\r\n{\r\n    public abstract AbstractProductA
+    CreateProductA();\r\n    public abstract AbstractProductB CreateProductB();\r\n}\r\n\r\npublic
+    class ConcreteFactory1 : AbstractFactory\r\n{\r\n    public override AbstractProductA
+    CreateProductA()\r\n    {\r\n        return new ConcreteProductA1();\r\n    }\r\n\r\n   
+    public override AbstractProductB CreateProductB()\r\n    {\r\n        return
+    new ConcreteProductB1();\r\n    }\r\n}\r\n\r\npublic class ConcreteFactory2 :
+    AbstractFactory\r\n{\r\n    public override AbstractProductA CreateProductA()\r\n   
+    {\r\n        return new ConcreteProductA2();\r\n    }\r\n\r\n    public override
+    AbstractProductB CreateProductB()\r\n    {\r\n        return new ConcreteProductB2();\r\n   
+    }\r\n}\r\n\r\npublic abstract class AbstractProductA\r\n{\r\n}\r\n\r\npublic
+    abstract class AbstractProductB\r\n{\r\n    public abstract void Interact(AbstractProductA
+    a);\r\n}\r\n\r\npublic class ConcreteProductA1 : AbstractProductA\r\n{\r\n}\r\n\r\npublic
+    class ConcreteProductA2 : AbstractProductA\r\n{\r\n}\r\n\r\npublic class ConcreteProductB1
+    : AbstractProductB\r\n{\r\n    public override void Interact(AbstractProductA
+    a)\r\n    {\r\n        Console.WriteLine(this.GetType().Name +\r\n          \"
+    interacts with \" + a.GetType().Name);\r\n    }\r\n}\r\n\r\npublic class ConcreteProductB2
+    : AbstractProductB\r\n{\r\n    public override void Interact(AbstractProductA
+    a)\r\n    {\r\n        Console.WriteLine(this.GetType().Name +\r\n          \"
+    interacts with \" + a.GetType().Name);\r\n    }\r\n}\r\n"

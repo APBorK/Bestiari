@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415527072818489586}
   - component: {fileID: 5415527072818489589}
   m_Layer: 5
-  m_Name: Variable
+  m_Name: Iterator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,21 +68,36 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'customerName
-
-
-    orderTotal
-
-
-    invoiceNumber'
+  m_Text: "using System;\r\nusing System.Collections.Generic;\r\n\r\ninterface IIterator<T>\r\n{\r\n   
+    T First();\r\n    T Next();\r\n    bool IsDone();\r\n    T CurrentItem();\r\n}\r\n\r\ninterface
+    IAggregate<T>\r\n{\r\n    IIterator<T> CreateIterator();\r\n}\r\n\r\nclass ConcreteIterator<T>
+    : IIterator<T>\r\n{\r\n    private readonly IAggregate<T> _aggregate;\r\n   
+    private int _current;\r\n\r\n    public ConcreteIterator(IAggregate<T> aggregate)\r\n   
+    {\r\n        this._aggregate = aggregate;\r\n    }\r\n\r\n    public T First()\r\n   
+    {\r\n        return _aggregate[0];\r\n    }\r\n\r\n    public T Next()\r\n   
+    {\r\n        T ret = default(T);\r\n        if (_current < _aggregate.Count -
+    1)\r\n        {\r\n            ret = _aggregate[++_current];\r\n        }\r\n\r\n       
+    return ret;\r\n    }\r\n\r\n    public T CurrentItem()\r\n    {\r\n        return
+    _aggregate[_current];\r\n    }\r\n\r\n    public bool IsDone()\r\n    {\r\n       
+    return _current >= _aggregate.Count;\r\n    }\r\n}\r\n\r\nclass ConcreteAggregate<T>
+    : List<T>, IAggregate<T>\r\n{\r\n    public IIterator<T> CreateIterator()\r\n   
+    {\r\n        return new ConcreteIterator<T>(this);\r\n    }\r\n}\r\n\r\nclass
+    Client\r\n{\r\n    static void Main()\r\n    {\r\n        ConcreteAggregate<string>
+    aggregate = new ConcreteAggregate<string>\r\n        {\r\n            \"Item
+    1\",\r\n            \"Item 2\",\r\n            \"Item 3\",\r\n            \"Item
+    4\"\r\n        };\r\n\r\n        IIterator<string> iterator = aggregate.CreateIterator();\r\n\r\n       
+    Console.WriteLine(\"Iterating over collection:\");\r\n\r\n        for (string
+    item = iterator.First(); !iterator.IsDone(); item = iterator.Next())\r\n       
+    {\r\n            Console.WriteLine(item);\r\n        }\r\n\r\n        Console.ReadKey();\r\n   
+    }\r\n}\r\n"

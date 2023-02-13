@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415527072818489586}
   - component: {fileID: 5415527072818489589}
   m_Layer: 5
-  m_Name: Variable
+  m_Name: Singleton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,21 +68,25 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'customerName
-
-
-    orderTotal
-
-
-    invoiceNumber'
+  m_Text: "sealed class Singleton\r\n{\r\n    private static Singleton instance =
+    null;\r\n    private static readonly object padlock = new object();\r\n\r\n   
+    Singleton()\r\n    {\r\n    }\r\n\r\n    public static Singleton Instance\r\n   
+    {\r\n        get\r\n        {\r\n            lock (padlock)\r\n            {\r\n               
+    if (instance == null)\r\n                {\r\n                    instance =
+    new Singleton();\r\n                }\r\n                return instance;\r\n           
+    }\r\n        }\r\n    }\r\n}\r\n\r\nclass Client\r\n{\r\n    static void Main(string[]
+    args)\r\n    {\r\n        Singleton s1 = Singleton.Instance;\r\n        Singleton
+    s2 = Singleton.Instance;\r\n\r\n        if (s1 == s2)\r\n        {\r\n           
+    Console.WriteLine(\"Objects are the same instance\");\r\n        }\r\n\r\n       
+    Console.ReadKey();\r\n    }\r\n}\r\n"

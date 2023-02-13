@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415527072818489586}
   - component: {fileID: 5415527072818489589}
   m_Layer: 5
-  m_Name: Variable
+  m_Name: Prototype
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,21 +68,28 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'customerName
-
-
-    orderTotal
-
-
-    invoiceNumber'
+  m_Text: "abstract class Prototype\r\n{\r\n    public string Id { get; set; }\r\n   
+    public Prototype(string id)\r\n    {\r\n        this.Id = id;\r\n    }\r\n\r\n   
+    public abstract Prototype Clone();\r\n}\r\n\r\nclass ConcretePrototype1 : Prototype\r\n{\r\n   
+    public ConcretePrototype1(string id) : base(id)\r\n    {\r\n    }\r\n\r\n   
+    public override Prototype Clone()\r\n    {\r\n        return (Prototype)this.MemberwiseClone();\r\n   
+    }\r\n}\r\n\r\nclass ConcretePrototype2 : Prototype\r\n{\r\n    public ConcretePrototype2(string
+    id) : base(id)\r\n    {\r\n    }\r\n\r\n    public override Prototype Clone()\r\n   
+    {\r\n        return (Prototype)this.MemberwiseClone();\r\n    }\r\n}\r\n\r\nclass
+    Client\r\n{\r\n    static void Main(string[] args)\r\n    {\r\n        ConcretePrototype1
+    p1 = new ConcretePrototype1(\"1\");\r\n        ConcretePrototype1 c1 = (ConcretePrototype1)p1.Clone();\r\n\r\n       
+    ConcretePrototype2 p2 = new ConcretePrototype2(\"2\");\r\n        ConcretePrototype2
+    c2 = (ConcretePrototype2)p2.Clone();\r\n\r\n        Console.WriteLine(\"Cloned:
+    \" + c1.Id);\r\n        Console.WriteLine(\"Cloned: \" + c2.Id);\r\n\r\n       
+    Console.ReadKey();\r\n    }\r\n}\r\n"

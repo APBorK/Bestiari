@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5415527072818489591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5415527072818489588}
+  - component: {fileID: 5415527072818489586}
+  - component: {fileID: 5415527072818489589}
+  m_Layer: 5
+  m_Name: Flyweight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5415527072818489588
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415527072818489591}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 523, y: -1158}
+  m_SizeDelta: {x: 1000, y: 2115.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5415527072818489586
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415527072818489591}
+  m_CullTransparentMesh: 1
+--- !u!114 &5415527072818489589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5415527072818489591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 61
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 153
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "class Flyweight\r\n{\r\n    private string _intrinsicState;\r\n\r\n   
+    public Flyweight(string intrinsicState)\r\n    {\r\n        this._intrinsicState
+    = intrinsicState;\r\n    }\r\n\r\n    public string IntrinsicState\r\n    {\r\n       
+    get { return _intrinsicState; }\r\n    }\r\n\r\n    public void Operation(string
+    extrinsicState)\r\n    {\r\n        Console.WriteLine(\"Flyweight: Displaying
+    intrinsic state: \" + IntrinsicState);\r\n        Console.WriteLine(\"Flyweight:
+    Displaying extrinsic state: \" + extrinsicState);\r\n    }\r\n}\r\n\r\nclass
+    FlyweightFactory\r\n{\r\n    private Dictionary<string, Flyweight> _flyweights
+    = new Dictionary<string, Flyweight>();\r\n\r\n    public Flyweight GetFlyweight(string
+    key)\r\n    {\r\n        if (_flyweights.ContainsKey(key))\r\n        {\r\n           
+    Console.WriteLine(\"FlyweightFactory: Reusing existing flyweight: \" + key);\r\n           
+    return _flyweights[key];\r\n        }\r\n        else\r\n        {\r\n           
+    Console.WriteLine(\"FlyweightFactory: Creating new flyweight: \" + key);\r\n           
+    Flyweight flyweight = new Flyweight(key);\r\n            _flyweights.Add(key,
+    flyweight);\r\n            return flyweight;\r\n        }\r\n    }\r\n\r\n   
+    public void ListFlyweights()\r\n    {\r\n        var count = _flyweights.Count;\r\n       
+    Console.WriteLine(\"FlyweightFactory: I have \" + count + \" flyweights:\");\r\n       
+    foreach (var flyweight in _flyweights)\r\n        {\r\n            Console.WriteLine(flyweight.ToString());\r\n       
+    }\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
+    {\r\n        FlyweightFactory factory = new FlyweightFactory();\r\n\r\n       
+    Flyweight flyweight1 = factory.GetFlyweight(\"X\");\r\n        Flyweight flyweight2
+    = factory.GetFlyweight(\"Y\");\r\n        Flyweight flyweight3 = factory.GetFlyweight(\"Z\");\r\n       
+    Flyweight flyweight4 = factory.GetFlyweight(\"X\");\r\n        Flyweight flyweight5
+    = factory.GetFlyweight(\"Y\");\r\n\r\n        flyweight1.Operation(\"Composite
+    Call\");\r\n        flyweight2.Operation(\"Composite Call\");\r\n        flyweight3.Operation(\"Composite
+    Call\");\r\n        flyweight4.Operation(\"Composite Call\");\r\n        flyweight5.Operation(\"Composite
+    Call\");\r\n\r\n        factory.ListFlyweights();\r\n\r\n        Console.ReadKey();\r\n   
+    }\r\n}\r\n"

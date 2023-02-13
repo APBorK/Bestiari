@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415527072818489586}
   - component: {fileID: 5415527072818489589}
   m_Layer: 5
-  m_Name: Variable
+  m_Name: FactoryMethod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,21 +68,24 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'customerName
-
-
-    orderTotal
-
-
-    invoiceNumber'
+  m_Text: "public abstract class Creator\r\n{\r\n    public abstract Product FactoryMethod();\r\n\r\n   
+    public void AnOperation()\r\n    {\r\n        Product product = FactoryMethod();\r\n       
+    // \u0414\u0430\u043B\u0435\u0435, \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u043C
+    \u0441 \u044D\u043A\u0437\u0435\u043C\u043F\u043B\u044F\u0440\u043E\u043C \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430.\r\n   
+    }\r\n}\r\n\r\npublic class ConcreteCreatorA : Creator\r\n{\r\n    public override
+    Product FactoryMethod()\r\n    {\r\n        return new ConcreteProductA();\r\n   
+    }\r\n}\r\n\r\npublic class ConcreteCreatorB : Creator\r\n{\r\n    public override
+    Product FactoryMethod()\r\n    {\r\n        return new ConcreteProductB();\r\n   
+    }\r\n}\r\n\r\npublic abstract class Product\r\n{\r\n}\r\n\r\npublic class ConcreteProductA
+    : Product\r\n{\r\n}\r\n\r\npublic class ConcreteProductB : Product\r\n{\r\n}\r\n"

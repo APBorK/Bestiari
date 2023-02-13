@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5415527072818489586}
   - component: {fileID: 5415527072818489589}
   m_Layer: 5
-  m_Name: Variable
+  m_Name: Strategy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,21 +68,28 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 80
+    m_FontSize: 61
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 153
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'customerName
-
-
-    orderTotal
-
-
-    invoiceNumber'
+  m_Text: "using System;\r\n\r\ninterface IStrategy\r\n{\r\n    int DoOperation(int
+    num1, int num2);\r\n}\r\n\r\nclass AdditionStrategy : IStrategy\r\n{\r\n    public
+    int DoOperation(int num1, int num2)\r\n    {\r\n        return num1 + num2;\r\n   
+    }\r\n}\r\n\r\nclass SubtractionStrategy : IStrategy\r\n{\r\n    public int DoOperation(int
+    num1, int num2)\r\n    {\r\n        return num1 - num2;\r\n    }\r\n}\r\n\r\nclass
+    Context\r\n{\r\n    private IStrategy _strategy;\r\n\r\n    public Context(IStrategy
+    strategy)\r\n    {\r\n        this._strategy = strategy;\r\n    }\r\n\r\n   
+    public int ExecuteStrategy(int num1, int num2)\r\n    {\r\n        return _strategy.DoOperation(num1,
+    num2);\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[]
+    args)\r\n    {\r\n        Context context = new Context(new AdditionStrategy());\r\n       
+    Console.WriteLine(\"10 + 5 = \" + context.ExecuteStrategy(10, 5));\r\n\r\n       
+    context = new Context(new SubtractionStrategy());\r\n        Console.WriteLine(\"10
+    - 5 = \" + context.ExecuteStrategy(10, 5));\r\n\r\n        Console.ReadLine();\r\n   
+    }\r\n}\r\n"
