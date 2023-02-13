@@ -81,10 +81,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "class Subsystem1\r\n{\r\n    public string Operation1()\r\n    {\r\n       
     return \"Subsystem1: Ready!\\n\";\r\n    }\r\n\r\n    public string OperationN()\r\n   
-    {\r\n        return \"Subsystem1: Go!\\n\";\r\n    }\r\n}\r\n\r\nclass Subsystem2\r\n{\r\n   
+    {\r\n        return \"Subsystem1: Go!\\n\";\r\n    }\r\n}\r\n\n\n\r\nclass Subsystem2\r\n{\r\n   
     public string Operation1()\r\n    {\r\n        return \"Subsystem2: Get ready!\\n\";\r\n   
     }\r\n\r\n    public string OperationZ()\r\n    {\r\n        return \"Subsystem2:
-    Fire!\\n\";\r\n    }\r\n}\r\n\r\nclass Facade\r\n{\r\n    private Subsystem1
+    Fire!\\n\";\r\n    }\r\n}\r\n\n\n\r\nclass Facade\r\n{\r\n    private Subsystem1
     _subsystem1;\r\n    private Subsystem2 _subsystem2;\r\n\r\n    public Facade(Subsystem1
     subsystem1, Subsystem2 subsystem2)\r\n    {\r\n        this._subsystem1 = subsystem1;\r\n       
     this._subsystem2 = subsystem2;\r\n    }\r\n\r\n    public string Operation()\r\n   
@@ -92,8 +92,8 @@ MonoBehaviour:
     result += _subsystem1.Operation1();\r\n        result += _subsystem2.Operation1();\r\n       
     result += \"Facade orders subsystems to perform the action:\\n\";\r\n       
     result += _subsystem1.OperationN();\r\n        result += _subsystem2.OperationZ();\r\n       
-    return result;\r\n    }\r\n}\r\n\r\nclass Client\r\n{\r\n    static void Main()\r\n   
-    {\r\n        Subsystem1 subsystem1 = new Subsystem1();\r\n        Subsystem2
-    subsystem2 = new Subsystem2();\r\n        Facade facade = new Facade(subsystem1,
+    return result;\r\n    }\r\n}\r\n\n\n\r\nclass Client\r\n{\r\n    static void
+    Main()\r\n    {\r\n        Subsystem1 subsystem1 = new Subsystem1();\r\n       
+    Subsystem2 subsystem2 = new Subsystem2();\r\n        Facade facade = new Facade(subsystem1,
     subsystem2);\r\n        Console.WriteLine(facade.Operation());\r\n        Console.ReadKey();\r\n   
     }\r\n}\r\n"

@@ -86,10 +86,10 @@ MonoBehaviour:
     Memento SaveStateToMemento()\r\n    {\r\n        Console.WriteLine(\"Saving state
     to Memento.\");\r\n        return new Memento(state);\r\n    }\r\n\r\n    public
     void GetStateFromMemento(Memento memento)\r\n    {\r\n        state = memento.State;\r\n       
-    Console.WriteLine(\"State = \" + state);\r\n    }\r\n}\r\n\r\nclass Memento\r\n{\r\n   
+    Console.WriteLine(\"State = \" + state);\r\n    }\r\n}\r\n\n\n\r\nclass Memento\r\n{\r\n   
     private string state;\r\n\r\n    public Memento(string state)\r\n    {\r\n       
     this.state = state;\r\n    }\r\n\r\n    public string State\r\n    {\r\n       
-    get { return state; }\r\n    }\r\n}\r\n\r\nclass Caretaker\r\n{\r\n    private
+    get { return state; }\r\n    }\r\n}\r\n\r\n\n\nclass Caretaker\r\n{\r\n    private
     List<Memento> mementos = new List<Memento>();\r\n\r\n    public void Add(Memento
     memento)\r\n    {\r\n        mementos.Add(memento);\r\n    }\r\n\r\n    public
     Memento Get(int index)\r\n    {\r\n        return mementos[index];\r\n    }\r\n}\r\n\r\nclass

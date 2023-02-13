@@ -81,14 +81,15 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "abstract class Prototype\r\n{\r\n    public string Id { get; set; }\r\n   
     public Prototype(string id)\r\n    {\r\n        this.Id = id;\r\n    }\r\n\r\n   
-    public abstract Prototype Clone();\r\n}\r\n\r\nclass ConcretePrototype1 : Prototype\r\n{\r\n   
-    public ConcretePrototype1(string id) : base(id)\r\n    {\r\n    }\r\n\r\n   
-    public override Prototype Clone()\r\n    {\r\n        return (Prototype)this.MemberwiseClone();\r\n   
-    }\r\n}\r\n\r\nclass ConcretePrototype2 : Prototype\r\n{\r\n    public ConcretePrototype2(string
-    id) : base(id)\r\n    {\r\n    }\r\n\r\n    public override Prototype Clone()\r\n   
-    {\r\n        return (Prototype)this.MemberwiseClone();\r\n    }\r\n}\r\n\r\nclass
-    Client\r\n{\r\n    static void Main(string[] args)\r\n    {\r\n        ConcretePrototype1
-    p1 = new ConcretePrototype1(\"1\");\r\n        ConcretePrototype1 c1 = (ConcretePrototype1)p1.Clone();\r\n\r\n       
+    public abstract Prototype Clone();\r\n}\r\n\r\n\n\nclass ConcretePrototype1 :
+    Prototype\r\n{\r\n    public ConcretePrototype1(string id) : base(id)\r\n   
+    {\r\n    }\r\n\r\n    public override Prototype Clone()\r\n    {\r\n        return
+    (Prototype)this.MemberwiseClone();\r\n    }\r\n}\r\n\r\n\n\nclass ConcretePrototype2
+    : Prototype\r\n{\r\n    public ConcretePrototype2(string id) : base(id)\r\n   
+    {\r\n    }\r\n\r\n    public override Prototype Clone()\r\n    {\r\n        return
+    (Prototype)this.MemberwiseClone();\r\n    }\r\n}\r\n\r\n\n\nclass Client\r\n{\r\n   
+    static void Main(string[] args)\r\n    {\r\n        ConcretePrototype1 p1 = new
+    ConcretePrototype1(\"1\");\r\n        ConcretePrototype1 c1 = (ConcretePrototype1)p1.Clone();\r\n\r\n       
     ConcretePrototype2 p2 = new ConcretePrototype2(\"2\");\r\n        ConcretePrototype2
     c2 = (ConcretePrototype2)p2.Clone();\r\n\r\n        Console.WriteLine(\"Cloned:
     \" + c1.Id);\r\n        Console.WriteLine(\"Cloned: \" + c2.Id);\r\n\r\n       

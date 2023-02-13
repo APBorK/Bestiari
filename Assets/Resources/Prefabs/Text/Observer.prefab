@@ -81,7 +81,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "public interface IObserver\r\n{\r\n    void Update(ISubject subject);\r\n}\r\n\r\npublic
     interface ISubject\r\n{\r\n    void Attach(IObserver observer);\r\n    void Detach(IObserver
-    observer);\r\n    void Notify();\r\n}\r\n\npublic class Subject : ISubject\r\n{\r\n   
+    observer);\r\n    void Notify();\r\n}\r\n\n\n\npublic class Subject : ISubject\r\n{\r\n   
     private List<IObserver> observers = new List<IObserver>();\r\n    private int
     state;\r\n\r\n    public int State\r\n    {\r\n        get { return state; }\r\n       
     set\r\n        {\r\n            state = value;\r\n            Notify();\r\n       

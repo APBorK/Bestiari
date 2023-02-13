@@ -80,21 +80,21 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "public abstract class AbstractFactory\r\n{\r\n    public abstract AbstractProductA
-    CreateProductA();\r\n    public abstract AbstractProductB CreateProductB();\r\n}\r\n\r\npublic
+    CreateProductA();\r\n    public abstract AbstractProductB CreateProductB();\r\n}\r\n\r\n\n\npublic
     class ConcreteFactory1 : AbstractFactory\r\n{\r\n    public override AbstractProductA
     CreateProductA()\r\n    {\r\n        return new ConcreteProductA1();\r\n    }\r\n\r\n   
     public override AbstractProductB CreateProductB()\r\n    {\r\n        return
-    new ConcreteProductB1();\r\n    }\r\n}\r\n\r\npublic class ConcreteFactory2 :
-    AbstractFactory\r\n{\r\n    public override AbstractProductA CreateProductA()\r\n   
+    new ConcreteProductB1();\r\n    }\r\n}\r\n\r\n\n\npublic class ConcreteFactory2
+    : AbstractFactory\r\n{\r\n    public override AbstractProductA CreateProductA()\r\n   
     {\r\n        return new ConcreteProductA2();\r\n    }\r\n\r\n    public override
     AbstractProductB CreateProductB()\r\n    {\r\n        return new ConcreteProductB2();\r\n   
-    }\r\n}\r\n\r\npublic abstract class AbstractProductA\r\n{\r\n}\r\n\r\npublic
+    }\r\n}\r\n\r\n\n\npublic abstract class AbstractProductA\r\n{\r\n}\r\n\r\n\n\npublic
     abstract class AbstractProductB\r\n{\r\n    public abstract void Interact(AbstractProductA
-    a);\r\n}\r\n\r\npublic class ConcreteProductA1 : AbstractProductA\r\n{\r\n}\r\n\r\npublic
-    class ConcreteProductA2 : AbstractProductA\r\n{\r\n}\r\n\r\npublic class ConcreteProductB1
-    : AbstractProductB\r\n{\r\n    public override void Interact(AbstractProductA
+    a);\r\n}\r\n\r\n\n\npublic class ConcreteProductA1 : AbstractProductA\r\n{\r\n}\r\n\r\n\n\npublic
+    class ConcreteProductA2 : AbstractProductA\r\n{\r\n}\r\n\r\n\n\npublic class
+    ConcreteProductB1 : AbstractProductB\r\n{\r\n    public override void Interact(AbstractProductA
     a)\r\n    {\r\n        Console.WriteLine(this.GetType().Name +\r\n          \"
-    interacts with \" + a.GetType().Name);\r\n    }\r\n}\r\n\r\npublic class ConcreteProductB2
-    : AbstractProductB\r\n{\r\n    public override void Interact(AbstractProductA
+    interacts with \" + a.GetType().Name);\r\n    }\r\n}\r\n\r\n\n\npublic class
+    ConcreteProductB2 : AbstractProductB\r\n{\r\n    public override void Interact(AbstractProductA
     a)\r\n    {\r\n        Console.WriteLine(this.GetType().Name +\r\n          \"
     interacts with \" + a.GetType().Name);\r\n    }\r\n}\r\n"

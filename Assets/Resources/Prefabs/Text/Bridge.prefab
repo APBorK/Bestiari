@@ -79,22 +79,22 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "interface IRenderer\r\n{\r\n    string WhatToRenderAs();\r\n}\r\n\r\nclass
+  m_Text: "interface IRenderer\r\n{\r\n    string WhatToRenderAs();\r\n}\r\n\r\n\n\nclass
     VectorRenderer : IRenderer\r\n{\r\n    public string WhatToRenderAs()\r\n   
-    {\r\n        return \"lines\";\r\n    }\r\n}\r\n\r\nclass RasterRenderer : IRenderer\r\n{\r\n   
-    public string WhatToRenderAs()\r\n    {\r\n        return \"pixels\";\r\n   
-    }\r\n}\r\n\r\nabstract class Shape\r\n{\r\n    protected IRenderer renderer;\r\n\r\n   
-    public Shape(IRenderer renderer)\r\n    {\r\n        this.renderer = renderer;\r\n   
-    }\r\n\r\n    public abstract string Name { get; }\r\n\r\n    public override
-    string ToString()\r\n    {\r\n        return string.Format(\"Drawing {0} as {1}\",
-    Name, renderer.WhatToRenderAs());\r\n    }\r\n}\r\n\r\nclass Triangle : Shape\r\n{\r\n   
-    public Triangle(IRenderer renderer) : base(renderer)\r\n    {\r\n    }\r\n\r\n   
-    public override string Name\r\n    {\r\n        get { return \"Triangle\"; }\r\n   
-    }\r\n}\r\n\r\nclass Circle : Shape\r\n{\r\n    public Circle(IRenderer renderer)
-    : base(renderer)\r\n    {\r\n    }\r\n\r\n    public override string Name\r\n   
-    {\r\n        get { return \"Circle\"; }\r\n    }\r\n}\r\n\r\nclass Client\r\n{\r\n   
-    static void Main(string[] args)\r\n    {\r\n        List<Shape> shapes = new
-    List<Shape>\r\n        {\r\n            new Triangle(new RasterRenderer()),\r\n           
+    {\r\n        return \"lines\";\r\n    }\r\n}\r\n\r\n\n\nclass RasterRenderer
+    : IRenderer\r\n{\r\n    public string WhatToRenderAs()\r\n    {\r\n        return
+    \"pixels\";\r\n    }\r\n}\r\n\r\n\n\nabstract class Shape\r\n{\r\n    protected
+    IRenderer renderer;\r\n\r\n    public Shape(IRenderer renderer)\r\n    {\r\n       
+    this.renderer = renderer;\r\n    }\r\n\r\n    public abstract string Name { get;
+    }\r\n\r\n    public override string ToString()\r\n    {\r\n        return string.Format(\"Drawing
+    {0} as {1}\", Name, renderer.WhatToRenderAs());\r\n    }\r\n}\r\n\r\n\n\nclass
+    Triangle : Shape\r\n{\r\n    public Triangle(IRenderer renderer) : base(renderer)\r\n   
+    {\r\n    }\r\n\r\n    public override string Name\r\n    {\r\n        get { return
+    \"Triangle\"; }\r\n    }\r\n}\r\n\r\n\n\nclass Circle : Shape\r\n{\r\n    public
+    Circle(IRenderer renderer) : base(renderer)\r\n    {\r\n    }\r\n\r\n    public
+    override string Name\r\n    {\r\n        get { return \"Circle\"; }\r\n    }\r\n}\r\n\r\n\n\nclass
+    Client\r\n{\r\n    static void Main(string[] args)\r\n    {\r\n        List<Shape>
+    shapes = new List<Shape>\r\n        {\r\n            new Triangle(new RasterRenderer()),\r\n           
     new Circle(new VectorRenderer())\r\n        };\r\n\r\n        foreach (var shape
     in shapes)\r\n        {\r\n            Console.WriteLine(shape);\r\n        }\r\n\r\n       
     Console.ReadKey();\r\n    }\r\n}\r\n"

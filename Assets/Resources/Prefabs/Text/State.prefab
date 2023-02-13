@@ -87,23 +87,24 @@ MonoBehaviour:
     }\r\n\r\n        public void Next()\r\n        {\r\n            this._state.Next(this);\r\n       
     }\r\n\r\n        public void Prev()\r\n        {\r\n            this._state.Prev(this);\r\n       
     }\r\n\r\n        public void SetState(IOrderState state)\r\n        {\r\n           
-    this._state = state;\r\n        }\r\n    }\r\n\r\n    public class New : IOrderState\r\n   
-    {\r\n        public void Next(Order order)\r\n        {\r\n            order.SetState(new
-    Shipped());\r\n        }\r\n\r\n        public void Prev(Order order)\r\n       
-    {\r\n            Console.WriteLine(\"The order is in its earliest state\");\r\n       
-    }\r\n\r\n        public void PrintStatus()\r\n        {\r\n            Console.WriteLine(\"Order
-    is in the new state\");\r\n        }\r\n    }\r\n\r\n    public class Shipped
-    : IOrderState\r\n    {\r\n        public void Next(Order order)\r\n        {\r\n           
-    order.SetState(new Delivered());\r\n        }\r\n\r\n        public void Prev(Order
-    order)\r\n        {\r\n            order.SetState(new New());\r\n        }\r\n\r\n       
-    public void PrintStatus()\r\n        {\r\n            Console.WriteLine(\"Order
-    is in the shipped state\");\r\n        }\r\n    }\r\n\r\n    public class Delivered
-    : IOrderState\r\n    {\r\n        public void Next(Order order)\r\n        {\r\n           
-    Console.WriteLine(\"Order is already in its final state\");\r\n        }\r\n\r\n       
-    public void Prev(Order order)\r\n        {\r\n            order.SetState(new
-    Shipped());\r\n        }\r\n\r\n        public void PrintStatus()\r\n       
-    {\r\n            Console.WriteLine(\"Order is in the delivered state\");\r\n       
-    }\r\n    }\r\n\r\n    class Program\r\n    {\r\n        static void Main(string[]
-    args)\r\n        {\r\n            Order order = new Order(new New());\r\n           
-    order.Next();\r\n            order.Next();\r\n            order.Prev();\r\n           
-    order.Next();\r\n            Console.ReadKey();\r\n        }\r\n    }\r\n}\r\n"
+    this._state = state;\r\n        }\r\n    }\r\n\n\n\r\n    public class New :
+    IOrderState\r\n    {\r\n        public void Next(Order order)\r\n        {\r\n           
+    order.SetState(new Shipped());\r\n        }\r\n\r\n        public void Prev(Order
+    order)\r\n        {\r\n            Console.WriteLine(\"The order is in its earliest
+    state\");\r\n        }\r\n\r\n        public void PrintStatus()\r\n        {\r\n           
+    Console.WriteLine(\"Order is in the new state\");\r\n        }\r\n    }\r\n\r\n   
+    public class Shipped : IOrderState\r\n    {\r\n        public void Next(Order
+    order)\r\n        {\r\n            order.SetState(new Delivered());\r\n       
+    }\r\n\r\n        public void Prev(Order order)\r\n        {\r\n            order.SetState(new
+    New());\r\n        }\r\n\r\n        public void PrintStatus()\r\n        {\r\n           
+    Console.WriteLine(\"Order is in the shipped state\");\r\n        }\r\n    }\r\n\n\n\r\n   
+    public class Delivered : IOrderState\r\n    {\r\n        public void Next(Order
+    order)\r\n        {\r\n            Console.WriteLine(\"Order is already in its
+    final state\");\r\n        }\r\n\r\n        public void Prev(Order order)\r\n       
+    {\r\n            order.SetState(new Shipped());\r\n        }\r\n\r\n        public
+    void PrintStatus()\r\n        {\r\n            Console.WriteLine(\"Order is in
+    the delivered state\");\r\n        }\r\n    }\r\n\r\n    class Program\r\n   
+    {\r\n        static void Main(string[] args)\r\n        {\r\n            Order
+    order = new Order(new New());\r\n            order.Next();\r\n            order.Next();\r\n           
+    order.Prev();\r\n            order.Next();\r\n            Console.ReadKey();\r\n       
+    }\r\n    }\r\n}\r\n"

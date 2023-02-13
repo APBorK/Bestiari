@@ -82,28 +82,28 @@ MonoBehaviour:
   m_Text: "using System;\r\n\r\nabstract class Approver\r\n{\r\n    protected Approver
     successor;\r\n\r\n    public void SetSuccessor(Approver successor)\r\n    {\r\n       
     this.successor = successor;\r\n    }\r\n\r\n    public abstract void ProcessRequest(Purchase
-    purchase);\r\n}\r\n\r\nclass Director : Approver\r\n{\r\n    public override
+    purchase);\r\n}\r\n\r\n\n\nclass Director : Approver\r\n{\r\n    public override
     void ProcessRequest(Purchase purchase)\r\n    {\r\n        if (purchase.Amount
     < 10000.0)\r\n        {\r\n            Console.WriteLine(\"{0} approved request#
     {1}\",\r\n                this.GetType().Name, purchase.Number);\r\n        }\r\n       
     else if (successor != null)\r\n        {\r\n            successor.ProcessRequest(purchase);\r\n       
-    }\r\n    }\r\n}\r\n\r\nclass VicePresident : Approver\r\n{\r\n    public override
-    void ProcessRequest(Purchase purchase)\r\n    {\r\n        if (purchase.Amount
+    }\r\n    }\r\n}\r\n\r\n\n\nclass VicePresident : Approver\r\n{\r\n    public
+    override void ProcessRequest(Purchase purchase)\r\n    {\r\n        if (purchase.Amount
     < 25000.0)\r\n        {\r\n            Console.WriteLine(\"{0} approved request#
     {1}\",\r\n                this.GetType().Name, purchase.Number);\r\n        }\r\n       
     else if (successor != null)\r\n        {\r\n            successor.ProcessRequest(purchase);\r\n       
-    }\r\n    }\r\n}\r\n\r\nclass President : Approver\r\n{\r\n    public override
+    }\r\n    }\r\n}\r\n\r\n\n\nclass President : Approver\r\n{\r\n    public override
     void ProcessRequest(Purchase purchase)\r\n    {\r\n        if (purchase.Amount
     < 100000.0)\r\n        {\r\n            Console.WriteLine(\"{0} approved request#
     {1}\",\r\n                this.GetType().Name, purchase.Number);\r\n        }\r\n       
     else\r\n        {\r\n            Console.WriteLine(\r\n                \"Request#
     {0} requires an executive meeting!\",\r\n                purchase.Number);\r\n       
-    }\r\n    }\r\n}\r\n\r\nclass Purchase\r\n{\r\n    private int _number;\r\n   
+    }\r\n    }\r\n}\r\n\r\n\n\nclass Purchase\r\n{\r\n    private int _number;\r\n   
     private double _amount;\r\n\r\n    public Purchase(int number, double amount)\r\n   
     {\r\n        this._number = number;\r\n        this._amount = amount;\r\n   
     }\r\n\r\n    public int Number\r\n    {\r\n        get { return _number; }\r\n   
     }\r\n\r\n    public double Amount\r\n    {\r\n        get { return _amount; }\r\n   
-    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
+    }\r\n}\r\n\r\n\n\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
     {\r\n        Approver larry = new Director();\r\n        Approver sam = new VicePresident();\r\n       
     Approver tammy = new President();\r\n\r\n        larry.SetSuccessor(sam);\r\n       
     sam.SetSuccessor(tammy);\r\n\r\n        Purchase p = new Purchase(2021, 350.00);\r\n       

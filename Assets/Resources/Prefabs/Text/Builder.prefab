@@ -82,26 +82,26 @@ MonoBehaviour:
   m_Text: "class Product\r\n{\r\n    public string Part1 { get; set; }\r\n    public
     string Part2 { get; set; }\r\n    public string Part3 { get; set; }\r\n\r\n   
     public override string ToString()\r\n    {\r\n        return $\"Part1: {Part1},
-    Part2: {Part2}, Part3: {Part3}\";\r\n    }\r\n}\r\n\r\nabstract class Builder\r\n{\r\n   
+    Part2: {Part2}, Part3: {Part3}\";\r\n    }\r\n}\r\n\r\n\n\nabstract class Builder\r\n{\r\n   
     public abstract void BuildPart1();\r\n    public abstract void BuildPart2();\r\n   
-    public abstract void BuildPart3();\r\n    public abstract Product GetProduct();\r\n}\r\n\r\nclass
+    public abstract void BuildPart3();\r\n    public abstract Product GetProduct();\r\n}\r\n\r\n\n\nclass
     ConcreteBuilder1 : Builder\r\n{\r\n    private Product product = new Product();\r\n\r\n   
     public override void BuildPart1()\r\n    {\r\n        product.Part1 = \"Part1_1\";\r\n   
     }\r\n\r\n    public override void BuildPart2()\r\n    {\r\n        product.Part2
     = \"Part2_1\";\r\n    }\r\n\r\n    public override void BuildPart3()\r\n    {\r\n       
     product.Part3 = \"Part3_1\";\r\n    }\r\n\r\n    public override Product GetProduct()\r\n   
-    {\r\n        return product;\r\n    }\r\n}\r\n\r\nclass ConcreteBuilder2 : Builder\r\n{\r\n   
-    private Product product = new Product();\r\n\r\n    public override void BuildPart1()\r\n   
-    {\r\n        product.Part1 = \"Part1_2\";\r\n    }\r\n\r\n    public override
-    void BuildPart2()\r\n    {\r\n        product.Part2 = \"Part2_2\";\r\n    }\r\n\r\n   
-    public override void BuildPart3()\r\n    {\r\n        product.Part3 = \"Part3_2\";\r\n   
-    }\r\n\r\n    public override Product GetProduct()\r\n    {\r\n        return
-    product;\r\n    }\r\n}\r\n\r\nclass Director\r\n{\r\n    public void Construct(Builder
-    builder)\r\n    {\r\n        builder.BuildPart1();\r\n        builder.BuildPart2();\r\n       
-    builder.BuildPart3();\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void
-    Main(string[] args)\r\n    {\r\n        Director director = new Director();\r\n       
-    ConcreteBuilder1 builder1 = new ConcreteBuilder1();\r\n        ConcreteBuilder2
-    builder2 = new ConcreteBuilder2();\r\n\r\n        Console.WriteLine(\"Builder
+    {\r\n        return product;\r\n    }\r\n}\r\n\r\n\n\nclass ConcreteBuilder2
+    : Builder\r\n{\r\n    private Product product = new Product();\r\n\r\n    public
+    override void BuildPart1()\r\n    {\r\n        product.Part1 = \"Part1_2\";\r\n   
+    }\r\n\r\n    public override void BuildPart2()\r\n    {\r\n        product.Part2
+    = \"Part2_2\";\r\n    }\r\n\r\n    public override void BuildPart3()\r\n    {\r\n       
+    product.Part3 = \"Part3_2\";\r\n    }\r\n\r\n    public override Product GetProduct()\r\n   
+    {\r\n        return product;\r\n    }\r\n}\r\n\r\n\n\nclass Director\r\n{\r\n   
+    public void Construct(Builder builder)\r\n    {\r\n        builder.BuildPart1();\r\n       
+    builder.BuildPart2();\r\n        builder.BuildPart3();\r\n    }\r\n}\r\n\r\n\n\nclass
+    Program\r\n{\r\n    static void Main(string[] args)\r\n    {\r\n        Director
+    director = new Director();\r\n        ConcreteBuilder1 builder1 = new ConcreteBuilder1();\r\n       
+    ConcreteBuilder2 builder2 = new ConcreteBuilder2();\r\n\r\n        Console.WriteLine(\"Builder
     1:\");\r\n        director.Construct(builder1);\r\n        Console.WriteLine(builder1.GetProduct().ToString());\r\n\r\n       
     Console.WriteLine(\"Builder 2:\");\r\n        director.Construct(builder2);\r\n       
     Console.WriteLine(builder2.GetProduct().ToString());\r\n\r\n        Console.ReadKey();\r\n   

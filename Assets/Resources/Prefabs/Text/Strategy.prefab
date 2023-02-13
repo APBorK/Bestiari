@@ -80,16 +80,16 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "using System;\r\n\r\ninterface IStrategy\r\n{\r\n    int DoOperation(int
-    num1, int num2);\r\n}\r\n\r\nclass AdditionStrategy : IStrategy\r\n{\r\n    public
-    int DoOperation(int num1, int num2)\r\n    {\r\n        return num1 + num2;\r\n   
-    }\r\n}\r\n\r\nclass SubtractionStrategy : IStrategy\r\n{\r\n    public int DoOperation(int
-    num1, int num2)\r\n    {\r\n        return num1 - num2;\r\n    }\r\n}\r\n\r\nclass
-    Context\r\n{\r\n    private IStrategy _strategy;\r\n\r\n    public Context(IStrategy
-    strategy)\r\n    {\r\n        this._strategy = strategy;\r\n    }\r\n\r\n   
-    public int ExecuteStrategy(int num1, int num2)\r\n    {\r\n        return _strategy.DoOperation(num1,
-    num2);\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[]
-    args)\r\n    {\r\n        Context context = new Context(new AdditionStrategy());\r\n       
-    Console.WriteLine(\"10 + 5 = \" + context.ExecuteStrategy(10, 5));\r\n\r\n       
-    context = new Context(new SubtractionStrategy());\r\n        Console.WriteLine(\"10
-    - 5 = \" + context.ExecuteStrategy(10, 5));\r\n\r\n        Console.ReadLine();\r\n   
-    }\r\n}\r\n"
+    num1, int num2);\r\n}\r\n\n\n\r\nclass AdditionStrategy : IStrategy\r\n{\r\n   
+    public int DoOperation(int num1, int num2)\r\n    {\r\n        return num1 +
+    num2;\r\n    }\r\n}\r\n\n\n\r\nclass SubtractionStrategy : IStrategy\r\n{\r\n   
+    public int DoOperation(int num1, int num2)\r\n    {\r\n        return num1 -
+    num2;\r\n    }\r\n}\r\n\n\n\r\nclass Context\r\n{\r\n    private IStrategy _strategy;\r\n\r\n   
+    public Context(IStrategy strategy)\r\n    {\r\n        this._strategy = strategy;\r\n   
+    }\r\n\r\n    public int ExecuteStrategy(int num1, int num2)\r\n    {\r\n       
+    return _strategy.DoOperation(num1, num2);\r\n    }\r\n}\r\n\r\n\n\nclass Program\r\n{\r\n   
+    static void Main(string[] args)\r\n    {\r\n        Context context = new Context(new
+    AdditionStrategy());\r\n        Console.WriteLine(\"10 + 5 = \" + context.ExecuteStrategy(10,
+    5));\r\n\r\n        context = new Context(new SubtractionStrategy());\r\n       
+    Console.WriteLine(\"10 - 5 = \" + context.ExecuteStrategy(10, 5));\r\n\r\n       
+    Console.ReadLine();\r\n    }\r\n}\r\n"

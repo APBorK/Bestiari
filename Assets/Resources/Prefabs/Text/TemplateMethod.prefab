@@ -84,7 +84,7 @@ MonoBehaviour:
     \u041C\u0435\u0442\u043E\u0434\"\r\nabstract class TemplateMethod\r\n{\r\n   
     public void TemplateMethodAlgorithm()\r\n    {\r\n        Step1();\r\n       
     Step2();\r\n        Step3();\r\n    }\r\n\r\n    protected abstract void Step1();\r\n   
-    protected abstract void Step2();\r\n    protected abstract void Step3();\r\n}\r\n\r\n//
+    protected abstract void Step2();\r\n    protected abstract void Step3();\r\n}\r\n\n\n\r\n//
     \u041A\u043E\u043D\u043A\u0440\u0435\u0442\u043D\u044B\u0435 \u043A\u043B\u0430\u0441\u0441\u044B,
     \u0440\u0435\u0430\u043B\u0438\u0437\u0443\u044E\u0449\u0438\u0435 \u0448\u0430\u0431\u043B\u043E\u043D\u043D\u044B\u0439
     \u043C\u0435\u0442\u043E\u0434\r\nclass ConcreteClassA : TemplateMethod\r\n{\r\n   
@@ -92,12 +92,12 @@ MonoBehaviour:
     Step1\");\r\n    }\r\n\r\n    protected override void Step2()\r\n    {\r\n       
     Console.WriteLine(\"ConcreteClassA, Step2\");\r\n    }\r\n\r\n    protected override
     void Step3()\r\n    {\r\n        Console.WriteLine(\"ConcreteClassA, Step3\");\r\n   
-    }\r\n}\r\n\r\nclass ConcreteClassB : TemplateMethod\r\n{\r\n    protected override
-    void Step1()\r\n    {\r\n        Console.WriteLine(\"ConcreteClassB, Step1\");\r\n   
-    }\r\n\r\n    protected override void Step2()\r\n    {\r\n        Console.WriteLine(\"ConcreteClassB,
-    Step2\");\r\n    }\r\n\r\n    protected override void Step3()\r\n    {\r\n       
-    Console.WriteLine(\"ConcreteClassB, Step3\");\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n   
-    static void Main(string[] args)\r\n    {\r\n        TemplateMethod algorithmA
-    = new ConcreteClassA();\r\n        algorithmA.TemplateMethodAlgorithm();\r\n\r\n       
+    }\r\n}\r\n\n\n\r\nclass ConcreteClassB : TemplateMethod\r\n{\r\n    protected
+    override void Step1()\r\n    {\r\n        Console.WriteLine(\"ConcreteClassB,
+    Step1\");\r\n    }\r\n\r\n    protected override void Step2()\r\n    {\r\n       
+    Console.WriteLine(\"ConcreteClassB, Step2\");\r\n    }\r\n\r\n    protected override
+    void Step3()\r\n    {\r\n        Console.WriteLine(\"ConcreteClassB, Step3\");\r\n   
+    }\r\n}\r\n\n\n\r\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
+    {\r\n        TemplateMethod algorithmA = new ConcreteClassA();\r\n        algorithmA.TemplateMethodAlgorithm();\r\n\r\n       
     TemplateMethod algorithmB = new ConcreteClassB();\r\n        algorithmB.TemplateMethodAlgorithm();\r\n\r\n       
     Console.ReadLine();\r\n    }\r\n}\r\n"

@@ -81,22 +81,22 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "abstract class Beverage\r\n{\r\n    protected string description = \"Unknown
     Beverage\";\r\n\r\n    public virtual string GetDescription()\r\n    {\r\n       
-    return description;\r\n    }\r\n\r\n    public abstract double Cost();\r\n}\r\n\r\nclass
+    return description;\r\n    }\r\n\r\n    public abstract double Cost();\r\n}\r\n\r\n\n\nclass
     Espresso : Beverage\r\n{\r\n    public Espresso()\r\n    {\r\n        description
     = \"Espresso\";\r\n    }\r\n\r\n    public override double Cost()\r\n    {\r\n       
-    return 1.99;\r\n    }\r\n}\r\n\r\nabstract class CondimentDecorator : Beverage\r\n{\r\n   
-    public abstract override string GetDescription();\r\n}\r\n\r\nclass Mocha : CondimentDecorator\r\n{\r\n   
-    Beverage beverage;\r\n\r\n    public Mocha(Beverage beverage)\r\n    {\r\n       
+    return 1.99;\r\n    }\r\n}\r\n\n\n\r\nabstract class CondimentDecorator : Beverage\r\n{\r\n   
+    public abstract override string GetDescription();\r\n}\r\n\n\n\r\nclass Mocha
+    : CondimentDecorator\r\n{\r\n    Beverage beverage;\r\n\r\n    public Mocha(Beverage
+    beverage)\r\n    {\r\n        this.beverage = beverage;\r\n    }\r\n\r\n    public
+    override string GetDescription()\r\n    {\r\n        return beverage.GetDescription()
+    + \", Mocha\";\r\n    }\r\n\r\n    public override double Cost()\r\n    {\r\n       
+    return 0.20 + beverage.Cost();\r\n    }\r\n}\r\n\n\n\r\nclass Whip : CondimentDecorator\r\n{\r\n   
+    Beverage beverage;\r\n\r\n    public Whip(Beverage beverage)\r\n    {\r\n       
     this.beverage = beverage;\r\n    }\r\n\r\n    public override string GetDescription()\r\n   
-    {\r\n        return beverage.GetDescription() + \", Mocha\";\r\n    }\r\n\r\n   
-    public override double Cost()\r\n    {\r\n        return 0.20 + beverage.Cost();\r\n   
-    }\r\n}\r\n\r\nclass Whip : CondimentDecorator\r\n{\r\n    Beverage beverage;\r\n\r\n   
-    public Whip(Beverage beverage)\r\n    {\r\n        this.beverage = beverage;\r\n   
-    }\r\n\r\n    public override string GetDescription()\r\n    {\r\n        return
-    beverage.GetDescription() + \", Whip\";\r\n    }\r\n\r\n    public override double
-    Cost()\r\n    {\r\n        return 0.10 + beverage.Cost();\r\n    }\r\n}\r\n\r\nclass
-    Client\r\n{\r\n    static void Main(string[] args)\r\n    {\r\n        Beverage
-    beverage = new Espresso();\r\n        Console.WriteLine(beverage.GetDescription()
+    {\r\n        return beverage.GetDescription() + \", Whip\";\r\n    }\r\n\r\n   
+    public override double Cost()\r\n    {\r\n        return 0.10 + beverage.Cost();\r\n   
+    }\r\n}\r\n\r\n\n\nclass Client\r\n{\r\n    static void Main(string[] args)\r\n   
+    {\r\n        Beverage beverage = new Espresso();\r\n        Console.WriteLine(beverage.GetDescription()
     + \" $\" + beverage.Cost());\r\n\r\n        Beverage beverage2 = new Espresso();\r\n       
     beverage2 = new Mocha(beverage2);\r\n        beverage2 = new Mocha(beverage2);\r\n       
     beverage2 = new Whip(beverage2);\r\n        Console.WriteLine(beverage2.GetDescription()

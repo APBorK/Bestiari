@@ -80,24 +80,24 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "using System;\r\nusing System.Collections.Generic;\r\n\r\ninterface IIterator<T>\r\n{\r\n   
-    T First();\r\n    T Next();\r\n    bool IsDone();\r\n    T CurrentItem();\r\n}\r\n\r\ninterface
-    IAggregate<T>\r\n{\r\n    IIterator<T> CreateIterator();\r\n}\r\n\r\nclass ConcreteIterator<T>
-    : IIterator<T>\r\n{\r\n    private readonly IAggregate<T> _aggregate;\r\n   
-    private int _current;\r\n\r\n    public ConcreteIterator(IAggregate<T> aggregate)\r\n   
-    {\r\n        this._aggregate = aggregate;\r\n    }\r\n\r\n    public T First()\r\n   
-    {\r\n        return _aggregate[0];\r\n    }\r\n\r\n    public T Next()\r\n   
-    {\r\n        T ret = default(T);\r\n        if (_current < _aggregate.Count -
-    1)\r\n        {\r\n            ret = _aggregate[++_current];\r\n        }\r\n\r\n       
-    return ret;\r\n    }\r\n\r\n    public T CurrentItem()\r\n    {\r\n        return
-    _aggregate[_current];\r\n    }\r\n\r\n    public bool IsDone()\r\n    {\r\n       
-    return _current >= _aggregate.Count;\r\n    }\r\n}\r\n\r\nclass ConcreteAggregate<T>
-    : List<T>, IAggregate<T>\r\n{\r\n    public IIterator<T> CreateIterator()\r\n   
-    {\r\n        return new ConcreteIterator<T>(this);\r\n    }\r\n}\r\n\r\nclass
-    Client\r\n{\r\n    static void Main()\r\n    {\r\n        ConcreteAggregate<string>
-    aggregate = new ConcreteAggregate<string>\r\n        {\r\n            \"Item
-    1\",\r\n            \"Item 2\",\r\n            \"Item 3\",\r\n            \"Item
-    4\"\r\n        };\r\n\r\n        IIterator<string> iterator = aggregate.CreateIterator();\r\n\r\n       
-    Console.WriteLine(\"Iterating over collection:\");\r\n\r\n        for (string
-    item = iterator.First(); !iterator.IsDone(); item = iterator.Next())\r\n       
-    {\r\n            Console.WriteLine(item);\r\n        }\r\n\r\n        Console.ReadKey();\r\n   
-    }\r\n}\r\n"
+    T First();\r\n    T Next();\r\n    bool IsDone();\r\n    T CurrentItem();\r\n}\r\n\r\n\n\ninterface
+    IAggregate<T>\r\n{\r\n    IIterator<T> CreateIterator();\r\n}\r\n\r\n\n\nclass
+    ConcreteIterator<T> : IIterator<T>\r\n{\r\n    private readonly IAggregate<T>
+    _aggregate;\r\n    private int _current;\r\n\r\n    public ConcreteIterator(IAggregate<T>
+    aggregate)\r\n    {\r\n        this._aggregate = aggregate;\r\n    }\r\n\r\n   
+    public T First()\r\n    {\r\n        return _aggregate[0];\r\n    }\r\n\r\n   
+    public T Next()\r\n    {\r\n        T ret = default(T);\r\n        if (_current
+    < _aggregate.Count - 1)\r\n        {\r\n            ret = _aggregate[++_current];\r\n       
+    }\r\n\r\n        return ret;\r\n    }\r\n\r\n    public T CurrentItem()\r\n   
+    {\r\n        return _aggregate[_current];\r\n    }\r\n\r\n    public bool IsDone()\r\n   
+    {\r\n        return _current >= _aggregate.Count;\r\n    }\r\n}\r\n\n\n\r\nclass
+    ConcreteAggregate<T> : List<T>, IAggregate<T>\r\n{\r\n    public IIterator<T>
+    CreateIterator()\r\n    {\r\n        return new ConcreteIterator<T>(this);\r\n   
+    }\r\n}\r\n\r\n\n\nclass Client\r\n{\r\n    static void Main()\r\n    {\r\n       
+    ConcreteAggregate<string> aggregate = new ConcreteAggregate<string>\r\n       
+    {\r\n            \"Item 1\",\r\n            \"Item 2\",\r\n            \"Item
+    3\",\r\n            \"Item 4\"\r\n        };\r\n\r\n        IIterator<string>
+    iterator = aggregate.CreateIterator();\r\n\r\n        Console.WriteLine(\"Iterating
+    over collection:\");\r\n\r\n        for (string item = iterator.First(); !iterator.IsDone();
+    item = iterator.Next())\r\n        {\r\n            Console.WriteLine(item);\r\n       
+    }\r\n\r\n        Console.ReadKey();\r\n    }\r\n}\r\n"

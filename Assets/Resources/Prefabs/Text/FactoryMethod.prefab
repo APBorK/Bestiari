@@ -83,9 +83,10 @@ MonoBehaviour:
     public void AnOperation()\r\n    {\r\n        Product product = FactoryMethod();\r\n       
     // \u0414\u0430\u043B\u0435\u0435, \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u043C
     \u0441 \u044D\u043A\u0437\u0435\u043C\u043F\u043B\u044F\u0440\u043E\u043C \u043F\u0440\u043E\u0434\u0443\u043A\u0442\u0430.\r\n   
-    }\r\n}\r\n\r\npublic class ConcreteCreatorA : Creator\r\n{\r\n    public override
-    Product FactoryMethod()\r\n    {\r\n        return new ConcreteProductA();\r\n   
-    }\r\n}\r\n\r\npublic class ConcreteCreatorB : Creator\r\n{\r\n    public override
-    Product FactoryMethod()\r\n    {\r\n        return new ConcreteProductB();\r\n   
-    }\r\n}\r\n\r\npublic abstract class Product\r\n{\r\n}\r\n\r\npublic class ConcreteProductA
-    : Product\r\n{\r\n}\r\n\r\npublic class ConcreteProductB : Product\r\n{\r\n}\r\n"
+    }\r\n}\r\n\r\n\n\npublic class ConcreteCreatorA : Creator\r\n{\r\n    public
+    override Product FactoryMethod()\r\n    {\r\n        return new ConcreteProductA();\r\n   
+    }\r\n}\r\n\n\n\r\npublic class ConcreteCreatorB : Creator\r\n{\r\n    public
+    override Product FactoryMethod()\r\n    {\r\n        return new ConcreteProductB();\r\n   
+    }\r\n}\r\n\r\n\n\npublic abstract class Product\r\n{\r\n}\r\n\r\n\n\npublic class
+    ConcreteProductA : Product\r\n{\r\n}\r\n\n\n\r\npublic class ConcreteProductB
+    : Product\r\n{\r\n}\r\n"

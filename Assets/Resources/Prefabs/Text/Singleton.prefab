@@ -85,8 +85,8 @@ MonoBehaviour:
     {\r\n        get\r\n        {\r\n            lock (padlock)\r\n            {\r\n               
     if (instance == null)\r\n                {\r\n                    instance =
     new Singleton();\r\n                }\r\n                return instance;\r\n           
-    }\r\n        }\r\n    }\r\n}\r\n\r\nclass Client\r\n{\r\n    static void Main(string[]
-    args)\r\n    {\r\n        Singleton s1 = Singleton.Instance;\r\n        Singleton
-    s2 = Singleton.Instance;\r\n\r\n        if (s1 == s2)\r\n        {\r\n           
+    }\r\n        }\r\n    }\r\n}\r\n\r\n\n\nclass Client\r\n{\r\n    static void
+    Main(string[] args)\r\n    {\r\n        Singleton s1 = Singleton.Instance;\r\n       
+    Singleton s2 = Singleton.Instance;\r\n\r\n        if (s1 == s2)\r\n        {\r\n           
     Console.WriteLine(\"Objects are the same instance\");\r\n        }\r\n\r\n       
     Console.ReadKey();\r\n    }\r\n}\r\n"

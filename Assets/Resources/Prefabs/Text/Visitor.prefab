@@ -81,28 +81,28 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "using System;\r\nusing System.Collections.Generic;\r\n\r\ninterface IVisitor\r\n{\r\n   
     void VisitConcreteElementA(ConcreteElementA concreteElementA);\r\n    void VisitConcreteElementB(ConcreteElementB
-    concreteElementB);\r\n}\r\n\r\ninterface IElement\r\n{\r\n    void Accept(IVisitor
-    visitor);\r\n}\r\n\r\nclass ConcreteVisitor1 : IVisitor\r\n{\r\n    public void
-    VisitConcreteElementA(ConcreteElementA concreteElementA)\r\n    {\r\n       
+    concreteElementB);\r\n}\r\n\r\n\n\ninterface IElement\r\n{\r\n    void Accept(IVisitor
+    visitor);\r\n}\r\n\n\n\r\nclass ConcreteVisitor1 : IVisitor\r\n{\r\n    public
+    void VisitConcreteElementA(ConcreteElementA concreteElementA)\r\n    {\r\n       
     Console.WriteLine(\"ConcreteVisitor1 is visiting ConcreteElementA.\");\r\n   
     }\r\n\r\n    public void VisitConcreteElementB(ConcreteElementB concreteElementB)\r\n   
     {\r\n        Console.WriteLine(\"ConcreteVisitor1 is visiting ConcreteElementB.\");\r\n   
-    }\r\n}\r\n\r\nclass ConcreteVisitor2 : IVisitor\r\n{\r\n    public void VisitConcreteElementA(ConcreteElementA
+    }\r\n}\r\n\n\n\r\nclass ConcreteVisitor2 : IVisitor\r\n{\r\n    public void VisitConcreteElementA(ConcreteElementA
     concreteElementA)\r\n    {\r\n        Console.WriteLine(\"ConcreteVisitor2 is
     visiting ConcreteElementA.\");\r\n    }\r\n\r\n    public void VisitConcreteElementB(ConcreteElementB
     concreteElementB)\r\n    {\r\n        Console.WriteLine(\"ConcreteVisitor2 is
     visiting ConcreteElementB.\");\r\n    }\r\n}\r\n\r\nclass ConcreteElementA :
     IElement\r\n{\r\n    public void Accept(IVisitor visitor)\r\n    {\r\n       
-    visitor.VisitConcreteElementA(this);\r\n    }\r\n}\r\n\r\nclass ConcreteElementB
+    visitor.VisitConcreteElementA(this);\r\n    }\r\n}\r\n\n\n\r\nclass ConcreteElementB
     : IElement\r\n{\r\n    public void Accept(IVisitor visitor)\r\n    {\r\n       
-    visitor.VisitConcreteElementB(this);\r\n    }\r\n}\r\n\r\nclass ObjectStructure\r\n{\r\n   
+    visitor.VisitConcreteElementB(this);\r\n    }\r\n}\r\n\n\n\r\nclass ObjectStructure\r\n{\r\n   
     private List<IElement> elements = new List<IElement>();\r\n\r\n    public void
     Attach(IElement element)\r\n    {\r\n        elements.Add(element);\r\n    }\r\n\r\n   
     public void Detach(IElement element)\r\n    {\r\n        elements.Remove(element);\r\n   
     }\r\n\r\n    public void Accept(IVisitor visitor)\r\n    {\r\n        foreach
     (IElement element in elements)\r\n        {\r\n            element.Accept(visitor);\r\n       
-    }\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
-    {\r\n        ObjectStructure objectStructure = new ObjectStructure();\r\n       
+    }\r\n    }\r\n}\r\n\r\n\n\nclass Program\r\n{\r\n    static void Main(string[]
+    args)\r\n    {\r\n        ObjectStructure objectStructure = new ObjectStructure();\r\n       
     objectStructure.Attach(new ConcreteElementA());\r\n        objectStructure.Attach(new
     ConcreteElementB());\r\n\r\n        ConcreteVisitor1 concreteVisitor1 = new ConcreteVisitor1();\r\n       
     ConcreteVisitor2 concreteVisitor2 = new ConcreteVisitor2();\r\n\r\n        objectStructure.Accept(concreteVisitor1);\r\n       

@@ -83,23 +83,24 @@ MonoBehaviour:
     void Register(Colleague colleague);\r\n    void Send(string message, Colleague
     colleague);\r\n}\r\n\r\nabstract class Colleague\r\n{\r\n    protected IMediator
     mediator;\r\n\r\n    public Colleague(IMediator mediator)\r\n    {\r\n       
-    this.mediator = mediator;\r\n    }\r\n}\r\n\r\nclass ConcreteColleagueA : Colleague\r\n{\r\n   
-    public ConcreteColleagueA(IMediator mediator) : base(mediator) { }\r\n\r\n   
-    public void Send(string message)\r\n    {\r\n        mediator.Send(message, this);\r\n   
-    }\r\n\r\n    public void Notify(string message)\r\n    {\r\n        Console.WriteLine(\"ColleagueA
-    gets message: \" + message);\r\n    }\r\n}\r\n\r\nclass ConcreteColleagueB :
-    Colleague\r\n{\r\n    public ConcreteColleagueB(IMediator mediator) : base(mediator)
+    this.mediator = mediator;\r\n    }\r\n}\r\n\r\n\n\nclass ConcreteColleagueA :
+    Colleague\r\n{\r\n    public ConcreteColleagueA(IMediator mediator) : base(mediator)
     { }\r\n\r\n    public void Send(string message)\r\n    {\r\n        mediator.Send(message,
     this);\r\n    }\r\n\r\n    public void Notify(string message)\r\n    {\r\n       
-    Console.WriteLine(\"ColleagueB gets message: \" + message);\r\n    }\r\n}\r\n\r\nclass
-    ConcreteMediator : IMediator\r\n{\r\n    private List<Colleague> colleagues =
-    new List<Colleague>();\r\n\r\n    public void Register(Colleague colleague)\r\n   
-    {\r\n        if (!colleagues.Contains(colleague))\r\n        {\r\n           
-    colleagues.Add(colleague);\r\n        }\r\n    }\r\n\r\n    public void Send(string
-    message, Colleague colleague)\r\n    {\r\n        foreach (var item in colleagues)\r\n       
-    {\r\n            if (item != colleague)\r\n            {\r\n                item.Notify(message);\r\n           
-    }\r\n        }\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[]
-    args)\r\n    {\r\n        ConcreteMediator mediator = new ConcreteMediator();\r\n\r\n       
+    Console.WriteLine(\"ColleagueA gets message: \" + message);\r\n    }\r\n}\r\n\r\n\n\nclass
+    ConcreteColleagueB : Colleague\r\n{\r\n    public ConcreteColleagueB(IMediator
+    mediator) : base(mediator) { }\r\n\r\n    public void Send(string message)\r\n   
+    {\r\n        mediator.Send(message, this);\r\n    }\r\n\r\n    public void Notify(string
+    message)\r\n    {\r\n        Console.WriteLine(\"ColleagueB gets message: \"
+    + message);\r\n    }\r\n}\r\n\r\n\n\nclass ConcreteMediator : IMediator\r\n{\r\n   
+    private List<Colleague> colleagues = new List<Colleague>();\r\n\r\n    public
+    void Register(Colleague colleague)\r\n    {\r\n        if (!colleagues.Contains(colleague))\r\n       
+    {\r\n            colleagues.Add(colleague);\r\n        }\r\n    }\r\n\r\n   
+    public void Send(string message, Colleague colleague)\r\n    {\r\n        foreach
+    (var item in colleagues)\r\n        {\r\n            if (item != colleague)\r\n           
+    {\r\n                item.Notify(message);\r\n            }\r\n        }\r\n   
+    }\r\n}\r\n\n\n\r\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
+    {\r\n        ConcreteMediator mediator = new ConcreteMediator();\r\n\r\n       
     ConcreteColleagueA colleagueA = new ConcreteColleagueA(mediator);\r\n       
     ConcreteColleagueB colleagueB = new ConcreteColleagueB(mediator);\r\n\r\n       
     mediator.Register(colleagueA);\r\n        mediator.Register(colleagueB);\r\n\r\n       

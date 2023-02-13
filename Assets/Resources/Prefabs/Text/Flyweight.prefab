@@ -85,7 +85,7 @@ MonoBehaviour:
     get { return _intrinsicState; }\r\n    }\r\n\r\n    public void Operation(string
     extrinsicState)\r\n    {\r\n        Console.WriteLine(\"Flyweight: Displaying
     intrinsic state: \" + IntrinsicState);\r\n        Console.WriteLine(\"Flyweight:
-    Displaying extrinsic state: \" + extrinsicState);\r\n    }\r\n}\r\n\r\nclass
+    Displaying extrinsic state: \" + extrinsicState);\r\n    }\r\n}\r\n\n\n\r\nclass
     FlyweightFactory\r\n{\r\n    private Dictionary<string, Flyweight> _flyweights
     = new Dictionary<string, Flyweight>();\r\n\r\n    public Flyweight GetFlyweight(string
     key)\r\n    {\r\n        if (_flyweights.ContainsKey(key))\r\n        {\r\n           
@@ -97,8 +97,8 @@ MonoBehaviour:
     public void ListFlyweights()\r\n    {\r\n        var count = _flyweights.Count;\r\n       
     Console.WriteLine(\"FlyweightFactory: I have \" + count + \" flyweights:\");\r\n       
     foreach (var flyweight in _flyweights)\r\n        {\r\n            Console.WriteLine(flyweight.ToString());\r\n       
-    }\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
-    {\r\n        FlyweightFactory factory = new FlyweightFactory();\r\n\r\n       
+    }\r\n    }\r\n}\r\n\n\n\r\nclass Program\r\n{\r\n    static void Main(string[]
+    args)\r\n    {\r\n        FlyweightFactory factory = new FlyweightFactory();\r\n\r\n       
     Flyweight flyweight1 = factory.GetFlyweight(\"X\");\r\n        Flyweight flyweight2
     = factory.GetFlyweight(\"Y\");\r\n        Flyweight flyweight3 = factory.GetFlyweight(\"Z\");\r\n       
     Flyweight flyweight4 = factory.GetFlyweight(\"X\");\r\n        Flyweight flyweight5

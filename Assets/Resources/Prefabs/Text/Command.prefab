@@ -80,28 +80,29 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: "using System;\r\nusing System.Collections.Generic;\r\n\r\ninterface ICommand\r\n{\r\n   
-    void Execute();\r\n    void Undo();\r\n}\r\n\r\nclass Light\r\n{\r\n    public
+    void Execute();\r\n    void Undo();\r\n}\r\n\r\n\n\nclass Light\r\n{\r\n    public
     void TurnOn()\r\n    {\r\n        Console.WriteLine(\"The light is on\");\r\n   
     }\r\n\r\n    public void TurnOff()\r\n    {\r\n        Console.WriteLine(\"The
-    light is off\");\r\n    }\r\n}\r\n\r\nclass LightOnCommand : ICommand\r\n{\r\n   
+    light is off\");\r\n    }\r\n}\r\n\r\n\n\nclass LightOnCommand : ICommand\r\n{\r\n   
     private Light light;\r\n\r\n    public LightOnCommand(Light light)\r\n    {\r\n       
     this.light = light;\r\n    }\r\n\r\n    public void Execute()\r\n    {\r\n       
     light.TurnOn();\r\n    }\r\n\r\n    public void Undo()\r\n    {\r\n        light.TurnOff();\r\n   
-    }\r\n}\r\n\r\nclass LightOffCommand : ICommand\r\n{\r\n    private Light light;\r\n\r\n   
-    public LightOffCommand(Light light)\r\n    {\r\n        this.light = light;\r\n   
-    }\r\n\r\n    public void Execute()\r\n    {\r\n        light.TurnOff();\r\n   
-    }\r\n\r\n    public void Undo()\r\n    {\r\n        light.TurnOn();\r\n    }\r\n}\r\n\r\nclass
+    }\r\n}\r\n\r\n\n\nclass LightOffCommand : ICommand\r\n{\r\n    private Light
+    light;\r\n\r\n    public LightOffCommand(Light light)\r\n    {\r\n        this.light
+    = light;\r\n    }\r\n\r\n    public void Execute()\r\n    {\r\n        light.TurnOff();\r\n   
+    }\r\n\r\n    public void Undo()\r\n    {\r\n        light.TurnOn();\r\n    }\r\n}\r\n\r\n\n\nclass
     RemoteControl\r\n{\r\n    private List<ICommand> commands = new List<ICommand>();\r\n\r\n   
     public void SetCommand(int slot, ICommand command)\r\n    {\r\n        commands[slot]
     = command;\r\n    }\r\n\r\n    public void PressButton(int slot)\r\n    {\r\n       
     commands[slot].Execute();\r\n    }\r\n\r\n    public void PressUndoButton()\r\n   
     {\r\n        foreach (var command in commands)\r\n        {\r\n            command.Undo();\r\n       
-    }\r\n    }\r\n}\r\n\r\nclass Program\r\n{\r\n    static void Main(string[] args)\r\n   
-    {\r\n        Light light = new Light();\r\n        LightOnCommand lightOn = new
-    LightOnCommand(light);\r\n        LightOffCommand lightOff = new LightOffCommand(light);\r\n\r\n       
-    RemoteControl remoteControl = new RemoteControl();\r\n        remoteControl.SetCommand(0,
-    lightOn);\r\n        remoteControl.SetCommand(1, lightOff);\r\n\r\n        Console.WriteLine(\"Press
-    button 0 to turn on the light\");\r\n        remoteControl.PressButton(0);\r\n\r\n       
-    Console.WriteLine(\"Press button 1 to turn off the light\");\r\n        remoteControl.PressButton(1);\r\n\r\n       
+    }\r\n    }\r\n}\r\n\r\n\n\nclass Program\r\n{\r\n    static void Main(string[]
+    args)\r\n    {\r\n        Light light = new Light();\r\n        LightOnCommand
+    lightOn = new LightOnCommand(light);\r\n        LightOffCommand lightOff = new
+    LightOffCommand(light);\r\n\r\n        RemoteControl remoteControl = new RemoteControl();\r\n       
+    remoteControl.SetCommand(0, lightOn);\r\n        remoteControl.SetCommand(1,
+    lightOff);\r\n\r\n        Console.WriteLine(\"Press button 0 to turn on the light\");\r\n       
+    remoteControl.PressButton(0);\r\n\r\n        Console.WriteLine(\"Press button
+    1 to turn off the light\");\r\n        remoteControl.PressButton(1);\r\n\r\n       
     Console.WriteLine(\"Press undo button to undo the action\");\r\n        remoteControl.PressUndoButton();\r\n   
     }\r\n}\r\n"

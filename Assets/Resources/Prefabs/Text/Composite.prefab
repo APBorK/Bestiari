@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Text: "abstract class Component\r\n{\r\n    protected string name;\r\n\r\n   
     public Component(string name)\r\n    {\r\n        this.name = name;\r\n    }\r\n\r\n   
     public abstract void Add(Component component);\r\n    public abstract void Remove(Component
-    component);\r\n    public abstract void Display(int depth);\r\n}\r\n\r\nclass
+    component);\r\n    public abstract void Display(int depth);\r\n}\r\n\n\n\r\nclass
     Composite : Component\r\n{\r\n    private List<Component> children = new List<Component>();\r\n\r\n   
     public Composite(string name) : base(name)\r\n    {\r\n    }\r\n\r\n    public
     override void Add(Component component)\r\n    {\r\n        children.Add(component);\r\n   
@@ -90,14 +90,14 @@ MonoBehaviour:
     children.Remove(component);\r\n    }\r\n\r\n    public override void Display(int
     depth)\r\n    {\r\n        Console.WriteLine(new string('-', depth) + name);\r\n\r\n       
     foreach (Component component in children)\r\n        {\r\n            component.Display(depth
-    + 2);\r\n        }\r\n    }\r\n}\r\n\r\nclass Leaf : Component\r\n{\r\n    public
-    Leaf(string name) : base(name)\r\n    {\r\n    }\r\n\r\n    public override void
-    Add(Component component)\r\n    {\r\n        Console.WriteLine(\"Cannot add to
-    a leaf\");\r\n    }\r\n\r\n    public override void Remove(Component component)\r\n   
+    + 2);\r\n        }\r\n    }\r\n}\r\n\n\n\r\nclass Leaf : Component\r\n{\r\n   
+    public Leaf(string name) : base(name)\r\n    {\r\n    }\r\n\r\n    public override
+    void Add(Component component)\r\n    {\r\n        Console.WriteLine(\"Cannot
+    add to a leaf\");\r\n    }\r\n\r\n    public override void Remove(Component component)\r\n   
     {\r\n        Console.WriteLine(\"Cannot remove from a leaf\");\r\n    }\r\n\r\n   
     public override void Display(int depth)\r\n    {\r\n        Console.WriteLine(new
-    string('-', depth) + name);\r\n    }\r\n}\r\n\r\nclass Client\r\n{\r\n    static
-    void Main(string[] args)\r\n    {\r\n        Composite root = new Composite(\"root\");\r\n       
+    string('-', depth) + name);\r\n    }\r\n}\r\n\n\n\r\nclass Client\r\n{\r\n   
+    static void Main(string[] args)\r\n    {\r\n        Composite root = new Composite(\"root\");\r\n       
     root.Add(new Leaf(\"Leaf A\"));\r\n        root.Add(new Leaf(\"Leaf B\"));\r\n\r\n       
     Composite comp = new Composite(\"Composite X\");\r\n        comp.Add(new Leaf(\"Leaf
     XA\"));\r\n        comp.Add(new Leaf(\"Leaf XB\"));\r\n\r\n        root.Add(comp);\r\n       
