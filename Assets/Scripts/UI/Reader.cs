@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +10,25 @@ public class Reader : MonoBehaviour
     private ScrollRect _rectScroll;
     private RectTransform _lastContent;
 
-    void Start()
+    private void Start()
     {
         _rectScroll = GetComponent<ScrollRect>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            ColsedPanel();
+        }
+    }
+
     public void OpenPanel(GameObject content)
     {
+        if (content.name == "Panel")
+        {
+            content.transform.localPosition = Vector3.zero;
+        }
         var contentGameObject = _rectScroll.content.gameObject;
         _path.Push(contentGameObject);
         contentGameObject.SetActive(false);
@@ -26,6 +39,10 @@ public class Reader : MonoBehaviour
 
     public void ColsedPanel()
     {
+        if (_path.Count == 0)
+        {
+            Application.Quit();
+        }
         _path.Pop().SetActive(false);
         GameObject content = _path.Pop();
         content.SetActive(true);

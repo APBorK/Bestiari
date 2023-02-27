@@ -30,20 +30,4 @@ public class Writer : MonoBehaviour
         _panelExemple.GetComponent<RectTransform>().sizeDelta =
             new Vector2(_panel.GetComponent<RectTransform>().sizeDelta.x, _textExemple.GetComponent<Text>().preferredHeight + SizeText);
     }
-
-    //public void OpenExempleText()
-    //{
-    //    _panelExemple.SetActive(true);
-    //    for (int i = 0; i < _panelExemple.GetComponentsInChildren<GameObject>().Length; i++)
-    //    {
-    //        if (_panelExemple.GetComponentsInChildren<GameObject>()[i].name == _nameText)
-    //        {
-    //            _panelExemple.GetComponentsInChildren<GameObject>()[i].gameObject.SetActive(true);
-    //        }
-    //        else
-    //        {
-    //            _panelExemple.GetComponentsInChildren<GameObject>()[i].gameObject.SetActive(false);
-    //        }
-    //    }
-    //}
 }
